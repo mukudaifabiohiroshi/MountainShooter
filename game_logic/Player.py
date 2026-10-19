@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import pygame
+import pygame.key
 
-from Entity import Entity
+from game_logic.Entity import Entity
 from game_logic.Const import ENTITY_SPEED, WIN_HEIGHT, WIN_WIDTH, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_LEFT, \
     PLAYER_KEY_RIGHT
 

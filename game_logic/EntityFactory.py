@@ -1,7 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import random
+
 from game_logic.Background import Background
 from game_logic.Const import WIN_WIDTH, WIN_HEIGHT
+from game_logic.Enemy import Enemy
 from game_logic.Player import Player
 
 
@@ -20,3 +23,7 @@ class EntityFactory:
                 return Player('Player1', (10, WIN_HEIGHT / 2 - 30))
             case 'Player2':
                 return Player('Player2', (10, WIN_HEIGHT / 2 + 30))
+            case 'Enemy1':
+                return Enemy('Enemy1', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
+            case 'Enemy2':
+                return Enemy('Enemy2', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
