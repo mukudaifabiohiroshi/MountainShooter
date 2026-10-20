@@ -1,16 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import random
 import sys
-from random import random
 
 import pygame
-from pygame._freetype import Font
-from pygame.rect import Rect
-from pygame.surface import Surface
+from pygame import Surface, Rect
+from pygame.font import Font
+
 
 from game_logic.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
 from game_logic.Entity import Entity
 from game_logic.EntityFactory import EntityFactory
+from game_logic.EntityMediator import EntityMediator
 
 
 class Level:
@@ -50,7 +51,9 @@ class Level:
             self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
             self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
-        pass
+            EntityMediator.verify_collision(entity_list= self.entity_list)
+            EntityMediator.verify_health(entity_list= self.entity_list)
+    pass
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
