@@ -9,9 +9,11 @@ from pygame.font import Font
 
 
 from game_logic.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
+from game_logic.Enemy import Enemy
 from game_logic.Entity import Entity
 from game_logic.EntityFactory import EntityFactory
 from game_logic.EntityMediator import EntityMediator
+from game_logic.Player import Player
 
 
 class Level:
@@ -37,7 +39,10 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
-                pygame.display.flip()
+                if isinstance(ent, (Player, Enemy)):
+                    shoot = ent.shoot()
+                    if shoot is not None:
+                        self.entity_list.append(shoot)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -51,6 +56,7 @@ class Level:
             self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
             self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
+            # collisions
             EntityMediator.verify_collision(entity_list= self.entity_list)
             EntityMediator.verify_health(entity_list= self.entity_list)
     pass
