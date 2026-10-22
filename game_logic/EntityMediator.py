@@ -47,7 +47,11 @@ class EntityMediator:
         if enemy.last_dmg == 'Player1Shot':
             for ent in entity_list:
                 if ent.name == 'Player1':
-                    ent.score += 
+                    ent.score += enemy.score
+        elif enemy.last_dmg == 'Player2Shot':
+            for ent in entity_list:
+                if ent.name == 'Player2':
+                    ent.score += enemy.score
 
 
     @staticmethod
