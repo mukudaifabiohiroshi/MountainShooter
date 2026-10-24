@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import sys
+
 import pygame
 
 from game_logic.Const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTION
@@ -35,4 +37,5 @@ class Game:
                 pygame.quit()  # close window
                 quit()  # end game
             else:
-                pass
+                pygame.quit()
+                sys.exit()
