@@ -13,13 +13,13 @@ class EntityFactory:
     @staticmethod
     def get_entity(entity_name: str):
         match entity_name:
-            case 'Level1Bg':
+            case 'Level1Bg' | 'Level 1Bg':
                 list_bg = []
                 for i in range(7):  # level1bg images number
                     list_bg.append(Background(f'Level1Bg{i}', (0, 0)))
                     list_bg.append(Background(f'Level1Bg{i}', (WIN_WIDTH, 0)))
                 return list_bg
-            case 'Level2Bg':
+            case 'Level2Bg' | 'Level 2Bg':
                 list_bg = []
                 for i in range(5):  # level2bg images number
                     list_bg.append(Background(f'Level2Bg{i}', (0, 0)))
