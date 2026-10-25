@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import sys
 
 import pygame
@@ -23,7 +23,7 @@ class Score:
         name = ''
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.score_text(48, 'YOU WIN', C_YELLOW)
+            self.score_text(48, 'YOU WIN', C_YELLOW, SCORE_POS['Title'])
             text = 'Enter Player Name (4 characters):'
             score = player_score[0]
             if game_mode == MENU_OPTION[0]:
@@ -91,6 +91,6 @@ class Score:
 
 def get_formatted_date():
     current_datetime = datetime.now()
-    current_time = current_datetime.strftime('%H:%M')
-    current_date = current_datetime.strftime('%d/%m/%y')
+    current_time = current_datetime.strftime("%H:%M")
+    current_date = current_datetime.strftime("%d/%m/%y")
     return f"{current_time} - {current_date}"
